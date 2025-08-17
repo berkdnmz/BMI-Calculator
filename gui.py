@@ -1,9 +1,11 @@
 from tkinter import *
 import tkinter as tk
+from tkinter import messagebox
 
 class Mygui():
 
-    def __init__(self):
+    def __init__(self, calculator):
+        self.calculator = calculator
         self.root = tk.Tk()
         self.root.minsize(500,400)
         self.root.geometry("500x400")
@@ -20,22 +22,57 @@ class Mygui():
         self.label_height.place(relx=0.5, rely=0.34, anchor="center")
 
         #entry height
-        self.label_entry_height = Entry(self.root,font=("Helvetica", 12, "roman"),width=27,bg="#EEEFE0")
-        self.label_entry_height.place(relx=0.5, rely=0.44, anchor="center")
+        self.entry_height = Entry(self.root,font=("Helvetica", 12, "roman"),width=27,bg="#EEEFE0")
+        self.entry_height.place(relx=0.5, rely=0.44, anchor="center")
+        self.entry_height.bind("<Return>",self.enter_pressed)
+        self.entry_height.focus()
 
         #weight label
         self.label_weight = Label(self.root, text="Enter your weight (kg):", font=("Helvetica", 15, "roman bold"), padx=12, pady=10, bg="#D1D8BE", fg="#819A91")
         self.label_weight.place(relx=0.5, rely=0.59, anchor="center")
 
         #entry weight
-        self.label_entry_weight = Entry(self.root, font=("Helvetica", 12, "roman"), width=27, bg="#EEEFE0")
-        self.label_entry_weight.place(relx=0.5, rely=0.69, anchor="center")
+        self.entry_weight = Entry(self.root, font=("Helvetica", 12, "roman"), width=27, bg="#EEEFE0")
+        self.entry_weight.place(relx=0.5, rely=0.69, anchor="center")
+        self.entry_weight.bind("<Return>", self.enter_pressed)
 
         #result label
         self.label_result = Label(self.root,text="BMI = 20.1 : Normal", font=("Helvetica", 15, "roman bold"),padx=20, pady=10, bg="#EEEFE0", fg="#819A91")
-        self.label_result.place(relx=0.5, rely=0.87, anchor="center")
+        self.label_result_place = {'relx': 0.5, 'rely': 0.87, 'anchor': 'center'}
+        self.label_result.place(self.label_result_place)
         self.label_result.place_forget()
 
+
+    def enter_pressed(self, event=None):
+
+        try:
+            self.height = int(self.entry_height.get())
+            if 50>self.height or self.height>250:
+                messagebox.showerror("Error","Please enter a valid height!")
+                return
+
+        except ValueError:
+            messagebox.showerror("Error","Please enter a valid height!")
+            self.entry_height.delete(0, END)
+            return
+        except Exception as e:
+            print(f"An unexpected error occurred: {type(e).__name__}:{e}")
+            return
+        self.entry_weight.focus()
+        try:
+            self.weight = int(self.entry_weight.get())
+            if 30 > self.weight or self.weight > 200:
+                messagebox.showerror("Error","Please enter a valid weigh!")
+                return
+
+        except ValueError:
+            messagebox.showerror("Error","Please enter a valid weigh!")
+            self.entry_weight.delete(0, END)
+            return
+        except Exception as e:
+            print(f"An unexpected error occurred: {type(e).__name__}:{e}")
+            return
+        self.calculator.bmi_calculator(self.height, self.weight)
 
 
     def close_root(self,event=None):
