@@ -39,3 +39,6 @@ desktop.ini
 *.log
 tmp/
 temp/
+
+# Example test files
+test.py
