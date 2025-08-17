@@ -1,0 +1,41 @@
+# python files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+
+# Notebooks 
+*.ipynb_checkpoints
+
+
+# PyCharm specific
+.idea/
+
+# JetBrains related libraries
+/out/
+*.iml
+
+
+# Windows thumbnail cache
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+
+# Logs & temp
+*.log
+tmp/
+temp/
