@@ -8,10 +8,18 @@ class Mygui():
         self.calculator = calculator
         self.root = tk.Tk()
         self.root.minsize(500,400)
-        self.root.geometry("500x400")
         self.root.title("BMI Calculator")
         self.root.config(bg="#819A91")
         self.root.bind("<Escape>",self.close_root)
+
+        #center
+        self.root_height = 400
+        self.root_width = 500
+        screen_width = self.root.winfo_screenwidth()
+        screen_height = self.root.winfo_screenheight()
+        y = (screen_height - self.root_height) // 2
+        x = (screen_width - self.root_width) // 2
+        self.root.geometry(f"{self.root_width}x{self.root_height}+{x}+{y}")
 
         #title
         self.label_bmi_title = Label(self.root, text="BMI Calculator", font=("Times",25,"bold italic"), padx=70, pady=10,bg="#A7C1A8",fg="white")
