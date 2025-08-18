@@ -27,28 +27,32 @@ class Mygui():
 
         #height label
         self.label_height = Label(self.root, text="Enter your height (cm):", font=("Helvetica", 15, "roman bold"), padx=12, pady=10, bg="#D1D8BE", fg="#819A91")
-        self.label_height.place(relx=0.5, rely=0.34, anchor="center")
+        self.label_height.place(relx=0.5, rely=0.33, anchor="center")
 
         #entry height
         self.entry_height = Entry(self.root,font=("Helvetica", 12, "roman"),width=27,bg="#EEEFE0")
-        self.entry_height.place(relx=0.5, rely=0.44, anchor="center")
+        self.entry_height.place(relx=0.5, rely=0.43, anchor="center")
         self.entry_height.bind("<Return>",self.enter_pressed)
         self.entry_height.focus()
 
         #weight label
         self.label_weight = Label(self.root, text="Enter your weight (kg):", font=("Helvetica", 15, "roman bold"), padx=12, pady=10, bg="#D1D8BE", fg="#819A91")
-        self.label_weight.place(relx=0.5, rely=0.59, anchor="center")
+        self.label_weight.place(relx=0.5, rely=0.58, anchor="center")
 
         #entry weight
         self.entry_weight = Entry(self.root, font=("Helvetica", 12, "roman"), width=27, bg="#EEEFE0")
-        self.entry_weight.place(relx=0.5, rely=0.69, anchor="center")
+        self.entry_weight.place(relx=0.5, rely=0.68, anchor="center")
         self.entry_weight.bind("<Return>", self.enter_pressed)
 
         #result label
         self.label_result = Label(self.root,text="BMI = 20.1 : Normal", font=("Helvetica", 15, "roman bold"),padx=20, pady=10, bg="#EEEFE0", fg="#819A91")
-        self.label_result_place = {'relx': 0.5, 'rely': 0.87, 'anchor': 'center'}
+        self.label_result_place = {'relx': 0.5, 'rely': 0.83, 'anchor': 'center'}
         self.label_result.place(self.label_result_place)
         self.label_result.place_forget()
+
+        # Creator lable
+        self.label_creator = Label(self.root, text="Created by Berk", font=("Times", 10, "bold italic"), pady=5, padx=5, bg="#A7C1A8", fg="white")
+        self.label_creator.place(relx=1.0, rely=1.0, anchor="se")
 
 
     def enter_pressed(self, event=None):
